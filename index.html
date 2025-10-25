@@ -7,6 +7,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
     body {
       background-color: #0d0d0d;
       color: #e0e0e0;
@@ -32,6 +34,7 @@
 
     section {
       padding: 100px 0;
+      margin: 60px 0;
     }
 
     .neon-card {
@@ -46,18 +49,16 @@
       transform: translateY(-5px);
     }
 
-    section {
-      margin: 60px 0;
-    }
     .portfolio-item img {
       width: 100%;
-      height: 120px;
+      height: 100px;
       object-fit: contain;
       background-color: #111;
       border-radius: 8px;
       padding: 10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .portfolio-item img:hover {
       transform: scale(1.08);
       box-shadow: 0 0 15px #00ffff;
@@ -82,8 +83,6 @@
       color: #ffffff;
       text-shadow: 0 0 15px #00ffff;
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
   </style>
 </head>
 <body>
@@ -153,12 +152,31 @@
             <p>Atendimento técnico especializado para sistemas, redes e hospedagem.</p>
           </div>
         </div>
+        <!-- Novos serviços -->
+        <div class="col-md-6">
+          <div class="p-4 neon-card">
+            <i class="bi bi-mortarboard display-5 mb-3"></i>
+            <h5>Treinamento Drupal 7 na Udemy</h5>
+            <p>Curso completo para iniciantes aprenderem Drupal 7 com tema GovBR.<br>
+              <a href="https://www.udemy.com/course/basico-drupal-7-com-tema-govbr/?referralCode=48B83C9D59974F32832B" target="_blank" class="btn btn-outline-info mt-2">Acessar Curso</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 neon-card">
+            <i class="bi bi-youtube display-5 mb-3"></i>
+            <h5>Canal no YouTube</h5>
+            <p>Dicas práticas sobre Drupal, PHP e desenvolvimento web.<br>
+              <a href="https://www.youtube.com/@rogersilvabkd" target="_blank" class="btn btn-outline-info mt-2">Visitar Canal</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Portfólio -->
- <section id="portfolio" class="container text-center">
+  <section id="portfolio" class="container text-center">
     <h2 class="mb-5">Portfólio</h2>
     <div class="row g-4">
 
