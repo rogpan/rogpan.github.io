@@ -5,283 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roger Silva | Desenvolvedor Drupal & PHP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" />
+  <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
     body {
-      background-color: #0a0a0f;
+      background-color: #0a0a0a;
       color: #e0e0e0;
       font-family: 'Orbitron', sans-serif;
-      scroll-behavior: smooth;
     }
-
-    h1, h2, h3 {
+    header {
+      background: linear-gradient(90deg, #0a0a0a, #1a1a1a, #0a0a0a);
       color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
-    }
-
-    nav.navbar {
-      background-color: rgba(0, 0, 0, 0.85);
-      border-bottom: 1px solid #00ffff55;
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      color: #00ffff !important;
-      text-shadow: 0 0 10px #00ffff;
-    }
-
-    section {
-      padding: 100px 0;
-    }
-
-    .neon-card {
-      background: #111;
-      border: 1px solid #00ffff55;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .neon-card:hover {
-      box-shadow: 0 0 15px #00ffff88;
-      transform: translateY(-5px);
-    }
-
-    .portfolio-item img {
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-item:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffff88;
-    }
-
-    footer {
       text-align: center;
-      padding: 20px;
-      background-color: #000;
-      border-top: 1px solid #00ffff55;
-      color: #aaa;
+      padding: 80px 20px;
+      text-shadow: 0 0 10px #00ffff;
     }
-
-    .social-icons a {
+    h2 {
       color: #00ffff;
-      font-size: 1.8rem;
-      margin: 0 10px;
-      transition: 0.3s;
+      text-shadow: 0 0 8px #00ffff;
     }
-
-    .social-icons a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 15px #00ffff;
+    section {
+      margin: 60px 0;
     }
-
-    input, textarea {
-      background-color: #111 !important;
-      color: #fff !important;
-      border: 1px solid #00ffff55 !important;
+    .portfolio-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      background-color: #111;
+      border-radius: 8px;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    input:focus, textarea:focus {
-      box-shadow: 0 0 10px #00ffff !important;
-    }
-
-    .btn-neon {
-      background-color: #00ffff;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      transition: 0.3s;
-    }
-
-    .btn-neon:hover {
-      background-color: #00cccc;
+    .portfolio-item img:hover {
+      transform: scale(1.08);
       box-shadow: 0 0 15px #00ffff;
     }
-
-    .alert-custom {
-      background-color: #00ffff22;
-      border: 1px solid #00ffff88;
+    footer {
+      background: #000;
       color: #00ffff;
+      text-align: center;
+      padding: 30px 0;
+      text-shadow: 0 0 5px #00ffff;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .form-control, .btn {
+      border-radius: 8px;
+    }
+    .btn-custom {
+      background-color: #00ffff;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-custom:hover {
+      background-color: #0099aa;
+      color: #fff;
     }
   </style>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#home">Roger Silva</a>
-      <button class="navbar-toggler bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-light" href="#sobre">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#servicos">Serviços</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#portfolio">Portfólio</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#contato">Contato</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <header>
+    <h1>Roger Silva</h1>
+    <p>Desenvolvedor Drupal, PHP e Soluções em Servidores</p>
+  </header>
 
-  <!-- Home -->
-  <section id="home" class="text-center d-flex align-items-center justify-content-center" style="height:100vh;">
-    <div>
-      <h1 class="display-4 mb-3">Olá, sou <span style="color:#fff;">Roger Silva</span></h1>
-      <h3>Desenvolvedor Drupal & PHP | Suporte Remoto | Servidores NAS</h3>
-    </div>
-  </section>
-
-  <!-- Sobre -->
-  <section id="sobre" class="container text-center">
-    <h2 class="mb-4">Sobre Mim</h2>
-    <p class="lead">Sou um desenvolvedor especializado em <strong>Drupal</strong> e <strong>PHP</strong>, com experiência em administração de servidores, configuração de <strong>NAS</strong> e suporte remoto. Foco em soluções seguras e escaláveis para empresas e instituições.</p>
-  </section>
-
-  <!-- Serviços -->
-  <section id="servicos" class="bg-dark text-center">
-    <div class="container">
-      <h2 class="mb-5">Serviços</h2>
-      <div class="row g-4">
-        <div class="col-md-3"><div class="p-4 neon-card"><i class="bi bi-globe2 display-5 mb-3"></i><h5>Drupal</h5><p>Sites e sistemas modulares e seguros com o CMS Drupal.</p></div></div>
-        <div class="col-md-3"><div class="p-4 neon-card"><i class="bi bi-code-slash display-5 mb-3"></i><h5>PHP</h5><p>Desenvolvimento de sistemas, APIs e painéis administrativos.</p></div></div>
-        <div class="col-md-3"><div class="p-4 neon-card"><i class="bi bi-hdd-network display-5 mb-3"></i><h5>Servidores</h5><p>NAS, backup, automação e infraestrutura.</p></div></div>
-        <div class="col-md-3"><div class="p-4 neon-card"><i class="bi bi-headset display-5 mb-3"></i><h5>Suporte Remoto</h5><p>Atendimento técnico especializado e administração de sistemas.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfólio -->
   <section id="portfolio" class="container text-center">
     <h2 class="mb-5">Portfólio</h2>
     <div class="row g-4">
 
       <div class="col-md-4 portfolio-item">
         <a href="https://www.mestrehiram.org.br/" target="_blank">
-          <img src="https://www.mestrehiram.org.br/wp-content/uploads/2024/07/logo.png" class="img-fluid" alt="Loja Mestre Hiram">
+          <img src="https://www.mestrehiram.org.br/wp-content/uploads/2024/07/logo.png" alt="Loja Mestre Hiram">
         </a>
         <p class="mt-2">Loja Mestre Hiram</p>
       </div>
 
       <div class="col-md-4 portfolio-item">
         <a href="https://www.cavernas.org.br/" target="_blank">
-          <img src="https://www.cavernas.org.br/wp-content/uploads/2021/02/logo_sbe-com_texto-200_px.png" class="img-fluid" alt="Sociedade Brasileira de Espeleologia">
+          <img src="https://www.cavernas.org.br/wp-content/uploads/2021/02/logo_sbe-com_texto-200_px.png" alt="Sociedade Brasileira de Espeleologia">
         </a>
         <p class="mt-2">Sociedade Brasileira de Espeleologia</p>
       </div>
 
       <div class="col-md-4 portfolio-item">
         <a href="https://espeleoplanaltocentral.org.br/" target="_blank">
-          <img src="https://espeleoplanaltocentral.org.br/wp-content/uploads/2022/11/cropped-epc.jpg" class="img-fluid" alt="Espeleo Planalto Central">
+          <img src="https://espeleoplanaltocentral.org.br/wp-content/uploads/2022/11/cropped-epc.jpg" alt="Espeleo Planalto Central">
         </a>
         <p class="mt-2">Espeleo Planalto Central</p>
       </div>
 
       <div class="col-md-4 portfolio-item">
         <a href="https://egb.org.br/" target="_blank">
-          <img src="https://egb.org.br/wp-content/uploads/2019/05/Logo-EGB-2019-RGB.png" class="img-fluid" alt="Espeleo Grupo de Brasília">
+          <img src="https://egb.org.br/wp-content/uploads/2019/05/Logo-EGB-2019-RGB.png" alt="Espeleo Grupo de Brasília">
         </a>
         <p class="mt-2">Espeleo Grupo de Brasília</p>
       </div>
 
       <div class="col-md-4 portfolio-item">
         <a href="https://complexo.mestrehiram.org.br/" target="_blank">
-          <img src="https://complexo.mestrehiram.org.br/wp-content/uploads/2024/08/logo_geral_sem_borda.png" class="img-fluid" alt="Complexo Mestre Hiram">
+          <img src="https://complexo.mestrehiram.org.br/wp-content/uploads/2024/08/logo_geral_sem_borda.png" alt="Complexo Mestre Hiram">
         </a>
         <p class="mt-2">Complexo Mestre Hiram</p>
       </div>
 
       <div class="col-md-4 portfolio-item">
         <a href="https://cantodoriofc.com.br/" target="_blank">
-          <img src="https://cantodoriofc.com.br/site/wp-content/uploads/2023/04/307649451_464667072370782_6850558708950714696_n.jpg" class="img-fluid" alt="Canto do Rio FC">
+          <img src="https://cantodoriofc.com.br/site/wp-content/uploads/2023/04/307649451_464667072370782_6850558708950714696_n.jpg" alt="Canto do Rio FC">
         </a>
         <p class="mt-2">Canto do Rio Futebol Clube</p>
       </div>
 
+      <div class="col-md-4 portfolio-item">
+        <a href="#" target="_blank">
+          <img src="https://www.mestrehiram.org.br/wp-content/uploads/2024/07/logo.png" alt="Sistema para Lojas Maçônicas">
+        </a>
+        <p class="mt-2">Sistema para Lojas Maçônicas</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Contato -->
-  <section id="contato" class="bg-dark text-center">
-    <div class="container">
-      <h2 class="mb-4">Contato</h2>
-      <p class="lead">Envie uma mensagem diretamente pelo formulário abaixo:</p>
-
-      <div id="alert-msg" class="alert alert-custom d-none"></div>
-
-      <form id="contactForm" class="mx-auto" style="max-width:600px;text-align:left;">
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="telefone" name="telefone">
-        </div>
-        <div class="mb-3">
-          <label for="mensagem" class="form-label">Mensagem</label>
-          <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="captcha" class="form-label">Captcha: quanto é 3 + 4?</label>
-          <input type="text" class="form-control" id="captcha" name="captcha" required>
-        </div>
-        <button type="submit" class="btn btn-neon w-100">Enviar Mensagem</button>
-      </form>
-
-      <div class="social-icons mt-5">
-        <a href="mailto:rogpan@gmail.com"><i class="bi bi-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/roger-silva-2446401b0/" target="_blank"><i class="bi bi-linkedin"></i></a>
-        <a href="https://wa.me/5521980000000" target="_blank"><i class="bi bi-whatsapp"></i></a>
+  <section id="contato" class="container text-center">
+    <h2 class="mb-4">Contato</h2>
+    <form id="contact-form" class="mx-auto" style="max-width:500px;">
+      <div class="mb-3">
+        <input type="text" class="form-control" name="user_name" placeholder="Seu nome" required>
       </div>
-    </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" name="user_email" placeholder="Seu e-mail" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" name="user_phone" placeholder="Telefone">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" name="message" rows="4" placeholder="Sua mensagem..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-custom w-100">Enviar Mensagem</button>
+    </form>
   </section>
 
   <footer>
-    <p>© 2025 Roger Silva — Desenvolvedor Drupal & PHP</p>
+    <p>© 2025 Roger Silva — <a href="mailto:rogpan@gmail.com">rogpan@gmail.com</a></p>
+    <div class="mt-2">
+      <a href="https://www.linkedin.com/in/roger-silva-2446401b0/" target="_blank">LinkedIn</a> |
+      <a href="https://wa.me/5521988889999" target="_blank">WhatsApp</a>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
+    // Inicializa EmailJS
     (function() {
-      emailjs.init("YOUR_PUBLIC_KEY");
+      emailjs.init("SEU_USER_ID_AQUI");
     })();
 
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
-      const captcha = document.getElementById("captcha").value.trim();
-      const alertBox = document.getElementById("alert-msg");
-      alertBox.classList.add("d-none");
-
-      if (captcha !== "7") {
-        alertBox.classList.remove("d-none");
-        alertBox.textContent = "Captcha incorreto. Tente novamente.";
-        return;
-      }
-
-      const serviceID = "YOUR_SERVICE_ID";
-      const templateID = "YOUR_TEMPLATE_ID";
-
-      emailjs.sendForm(serviceID, templateID, this)
+      emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
         .then(() => {
-          alertBox.classList.remove("d-none");
-          alertBox.textContent = "Mensagem enviada com sucesso! Obrigado pelo contato.";
-          document.getElementById("contactForm").reset();
-        }, (err) => {
-          alertBox.classList.remove("d-none");
-          alertBox.textContent = "Erro ao enviar mensagem. Tente novamente.";
-          console.error(err);
+          alert('Mensagem enviada com sucesso!');
+          this.reset();
+        }, (error) => {
+          alert('Falha ao enviar: ' + JSON.stringify(error));
         });
     });
   </script>
