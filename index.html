@@ -1,264 +1,1042 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roger Silva | Desenvolvedor Drupal & PHP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roger Silva | PHP, Drupal e Sistemas Web</title>
+  <meta name="description" content="Desenvolvimento PHP, Drupal, sistemas web, suporte remoto, servidores e NAS.">
+  <meta name="keywords" content="PHP, Drupal, Full Stack, Sistemas Web, Suporte Remoto, NAS, Roger Silva">
+  <meta name="theme-color" content="#0f766e">
+  <meta property="og:title" content="Roger Silva | PHP, Drupal e Sistemas Web">
+  <meta property="og:description" content="Desenvolvimento PHP, Drupal, sistemas web, suporte remoto, servidores e NAS.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #0d0d0d;
-      color: #e0e0e0;
-      font-family: 'Orbitron', sans-serif;
+    :root {
+      --ink: #172026;
+      --muted: #65717c;
+      --surface: #ffffff;
+      --soft: #f4f7f6;
+      --line: #dfe7e4;
+      --teal: #0f766e;
+      --teal-dark: #115e59;
+      --deep: #10201f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-    h1, h2, h3 {
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font-family: "Inter", Arial, sans-serif;
     }
 
-    nav.navbar {
-      background-color: rgba(0, 0, 0, 0.85);
-      border-bottom: 1px solid #00ffff55;
+    a {
+      color: inherit;
+    }
+
+    .site-nav {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(223, 231, 228, 0.85);
+      backdrop-filter: blur(16px);
+      transition: box-shadow 180ms ease;
+    }
+
+    .site-nav.is-scrolled {
+      box-shadow: 0 10px 30px rgba(23, 32, 38, 0.08);
     }
 
     .navbar-brand {
-      font-weight: 700;
-      color: #00ffff !important;
-      text-shadow: 0 0 10px #00ffff;
+      align-items: center;
+      color: var(--ink);
+      display: inline-flex;
+      font-weight: 800;
+      gap: 0.65rem;
     }
 
-    section {
-      padding: 100px 0;
-    }
-
-    .neon-card {
-      background: #111;
-      border: 1px solid #00ffff55;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .neon-card:hover {
-      box-shadow: 0 0 15px #00ffff88;
-      transform: translateY(-5px);
-    }
-.portfolio-item img {
-      width: 100%;
-      height: 100px;
-      object-fit: contain;
-      background-color: #111;
+    .brand-mark {
+      align-items: center;
+      aspect-ratio: 1;
+      background: var(--teal);
       border-radius: 8px;
-      padding: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #fff;
+      display: inline-flex;
+      font-size: 0.86rem;
+      height: 2.25rem;
+      justify-content: center;
+      letter-spacing: 0;
     }
 
-    .portfolio-item img:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px #00ffff;
-    }
-    
-
-    .portfolio-item:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffff88;
+    .nav-link {
+      color: #324047;
+      font-weight: 600;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #000;
-      border-top: 1px solid #00ffff55;
-      color: #aaa;
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--teal);
     }
 
-    .social-icons a {
-      color: #00ffff;
-      font-size: 1.8rem;
-      margin: 0 10px;
-      transition: 0.3s;
+    .navbar-toggler {
+      border: 1px solid var(--line);
     }
 
-    .social-icons a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 15px #00ffff;
+    .btn {
+      border-radius: 8px;
+      font-weight: 700;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    .btn-primary {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .btn-outline-light:hover,
+    .btn-outline-light:focus {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      align-items: center;
+      display: inline-flex;
+      gap: 0.4rem;
+    }
+
+    .hero-section {
+      background:
+        radial-gradient(circle at 80% 15%, rgba(34, 197, 94, 0.22), transparent 28rem),
+        linear-gradient(135deg, #10201f 0%, #153532 52%, #0f2727 100%);
+      color: #fff;
+      overflow: hidden;
+      padding: 9.5rem 0 5.5rem;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .hero-section .eyebrow {
+      color: #8ff0c1;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 0.95;
+      margin: 0;
+    }
+
+    .hero-role {
+      color: #dff8ee;
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      font-weight: 700;
+      margin: 1rem 0 0;
+    }
+
+    .hero-copy {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 1.4rem 0 0;
+      max-width: 42rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .hero-actions .btn {
+      align-items: center;
+      display: inline-flex;
+      gap: 0.55rem;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 14px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      background: rgba(0, 0, 0, 0.22);
+      display: flex;
+      gap: 0.45rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .panel-header span {
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, 0.42);
+      border-radius: 50%;
+      display: block;
+      width: 0.68rem;
+    }
+
+    .panel-body {
+      padding: 1.25rem;
+    }
+
+    .panel-kicker {
+      color: #dff8ee;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .hero-logo-grid {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-logo-card,
+    .portfolio-logo {
+      align-items: center;
+      background: #fff;
+      border: 1px solid rgba(223, 231, 228, 0.9);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo-card {
+      aspect-ratio: 16 / 10;
+      padding: 0.9rem;
+    }
+
+    .hero-logo-card img,
+    .portfolio-logo img {
+      display: block;
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .hero-badge-card,
+    .portfolio-badge {
+      background: linear-gradient(135deg, #0f766e, #1d4ed8);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .hero-badge-card {
+      font-size: 1.7rem;
+    }
+
+    .panel-line {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      display: grid;
+      gap: 0.35rem;
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+    }
+
+    .panel-line span {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.84rem;
+    }
+
+    .panel-line strong {
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .section-block {
+      padding: 5.5rem 0;
+    }
+
+    .section-muted {
+      background: var(--soft);
+    }
+
+    .section-heading {
+      margin: 0 auto 2.3rem;
+      max-width: 46rem;
+    }
+
+    .section-heading h2,
+    .section-block h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.05;
+    }
+
+    .lead {
+      color: #3d4a51;
+      font-size: 1.12rem;
+      line-height: 1.8;
+    }
+
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .quick-tags span,
+    .project-tag {
+      background: #e4f5ef;
+      border: 1px solid #c5eadb;
+      border-radius: 999px;
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.45rem 0.72rem;
+    }
+
+    .service-card,
+    .portfolio-card,
+    .stack-card,
+    .contact-form,
+    .contact-copy {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .service-card {
+      height: 100%;
+      padding: 1.55rem;
+    }
+
+    .service-card i {
+      color: var(--teal);
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3,
+    .portfolio-card h3,
+    .stack-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p,
+    .portfolio-card p,
+    .stack-section p,
+    .contact-copy p {
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .text-link,
+    .project-link {
+      align-items: center;
+      color: var(--teal-dark);
+      display: inline-flex;
+      font-weight: 800;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+
+    .text-link:hover,
+    .project-link:hover {
+      color: var(--ink);
+    }
+
+    .portfolio-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .portfolio-card:hover {
+      box-shadow: 0 18px 40px rgba(15, 118, 110, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .portfolio-logo {
+      aspect-ratio: 16 / 9;
+      border-width: 0 0 1px;
+      border-radius: 0;
+      padding: 1.4rem;
+      text-decoration: none;
+    }
+
+    .portfolio-badge {
+      align-items: center;
+      border-radius: 12px;
+      display: inline-flex;
+      font-size: 2rem;
+      height: 5rem;
+      justify-content: center;
+      width: 5rem;
+    }
+
+    .portfolio-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1.35rem;
+    }
+
+    .portfolio-content p {
+      flex: 1;
+      margin: 0.75rem 0 1.2rem;
+    }
+
+    .project-tag {
+      align-self: flex-start;
+      margin-bottom: 0.85rem;
+    }
+
+    .stack-section {
+      background: var(--deep);
+      color: #fff;
+    }
+
+    .stack-section .section-kicker {
+      color: #8ff0c1;
+    }
+
+    .stack-section p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .stack-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+      height: 100%;
+      padding: 1.35rem;
+    }
+
+    .stack-card ul {
+      color: rgba(255, 255, 255, 0.74);
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .stack-card li + li {
+      margin-top: 0.4rem;
+    }
+
+    .contact-section {
+      background: linear-gradient(180deg, #fff 0%, #f7faf9 100%);
+    }
+
+    .contact-copy {
+      background: var(--deep);
+      color: #fff;
+      height: 100%;
+      padding: 2rem;
+    }
+
+    .contact-copy .section-kicker {
+      color: #8ff0c1;
+    }
+
+    .contact-copy p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-links a {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      color: #fff;
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.8rem 0.95rem;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .contact-form {
+      height: 100%;
+      padding: 2rem;
+    }
+
+    .form-control,
+    .form-select {
+      border-color: #cdd9d5;
+      border-radius: 8px;
+      padding: 0.8rem 0.9rem;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 0.2rem rgba(15, 118, 110, 0.16);
+    }
+
+    .site-footer {
+      background: #0b1514;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 1.3rem 0;
+    }
+
+    .site-footer a {
+      color: #8ff0c1;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 991.98px) {
+      .hero-section {
+        padding-top: 8rem;
+      }
+
+      .navbar-collapse {
+        padding: 1rem 0;
+      }
+
+      .nav-cta {
+        margin-top: 0.4rem;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero-section {
+        padding-bottom: 4rem;
+      }
+
+      .hero-actions .btn {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hero-logo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-block {
+        padding: 4rem 0;
+      }
+
+      .contact-form,
+      .contact-copy {
+        padding: 1.35rem;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top site-nav" aria-label="Navegação principal">
     <div class="container">
-      <a class="navbar-brand" href="#home">Roger Silva</a>
-      <button class="navbar-toggler bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#home" aria-label="Voltar ao início">
+        <span class="brand-mark">RS</span>
+        <span>Roger Silva</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-light" href="#sobre">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#servicos">Serviços</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#portfolio">Portfólio</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#contato">Contato</a></li>
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-primary btn-sm nav-cta" href="https://wa.me/5521965729525?text=Ol%C3%A1%2C%20Roger%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20em%20PHP%2FDrupal." target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-whatsapp" aria-hidden="true"></i>
+              Contato
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Home -->
-  <section id="home" class="text-center d-flex align-items-center justify-content-center" style="height:50vh;">
-    <div>
-      <h1 class="display-4 mb-3">Olá, sou <span style="color:#fff;">Roger Silva</span></h1>
-      <h3>Desenvolvedor Drupal & PHP | Suporte Remoto | Servidores NAS</h3>
-    </div>
-  </section>
+  <main id="home">
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="eyebrow">PHP, Drupal e infraestrutura</p>
+            <h1>Roger Silva</h1>
+            <p class="hero-role">Desenvolvedor PHP &amp; Drupal</p>
+            <p class="hero-copy">
+              Crio sites, sistemas e integrações com foco em clareza, segurança e operação simples.
+              Do front-end ao servidor, a ideia é entregar tecnologia que resolve o trabalho real.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="https://wa.me/5521965729525?text=Ol%C3%A1%2C%20Roger%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20em%20PHP%2FDrupal." target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                Falar no WhatsApp
+              </a>
+              <a class="btn btn-outline-light btn-lg" href="#portfolio">Ver portfólio</a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero-panel" aria-label="Projetos em destaque">
+              <div class="panel-header">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="panel-body">
+                <div class="panel-kicker">Projetos recentes</div>
+                <div class="hero-logo-grid">
+                  <div class="hero-logo-card">
+                    <img src="https://www.mestrehiram.org.br/uploads/logo/mestrehiram.png" alt="Mestre Hiram" loading="lazy">
+                  </div>
+                  <div class="hero-logo-card">
+                    <img src="https://complexo.mestrehiram.org.br/logo_geral_sem_borda-768x768.png" alt="Complexo Mestre Hiram" loading="lazy">
+                  </div>
+                  <div class="hero-logo-card">
+                    <img src="https://www.karcontrol.com.br/assets/img/logo.png" alt="Karcontrol" loading="lazy">
+                  </div>
+                  <div class="hero-logo-card">
+                    <img src="https://frotamanager.com.br/uploads/unidades/unit_20260804_185451_b6d940e3.png?v=1785880491" alt="FrotaManager" loading="lazy">
+                  </div>
+                  <div class="hero-logo-card hero-badge-card" aria-label="ComexPro">CP</div>
+                </div>
+                <div class="panel-line">
+                  <span>Sistemas web</span>
+                  <strong>Drupal, portais, frotas e comércio exterior</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Sobre -->
-  <section id="sobre" class="container text-center">
-    <h2 class="mb-4"></h2>
-    <p class="lead">Sou um desenvolvedor especializado em <strong>Drupal</strong> e <strong>PHP</strong>, com experiência em administração de servidores, configuração de <strong>NAS</strong> e suporte remoto. Tenho foco em soluções seguras, rápidas e escaláveis para projetos institucionais, empresariais e pessoais.</p>
-  </section>
+    <section id="sobre" class="section-block">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-5">
+            <p class="section-kicker">Sobre</p>
+            <h2>Desenvolvimento web com visão de operação.</h2>
+          </div>
+          <div class="col-lg-7">
+            <p class="lead mb-4">
+              Sou desenvolvedor especializado em Drupal e PHP, com experiência em administração de servidores,
+              configuração de NAS, suporte remoto e sistemas sob medida para projetos institucionais e empresariais.
+            </p>
+            <div class="quick-tags" aria-label="Especialidades">
+              <span>PHP</span>
+              <span>Drupal</span>
+              <span>MySQL</span>
+              <span>Bootstrap</span>
+              <span>Servidores</span>
+              <span>NAS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
- 
-   <!-- Serviços -->
-  <section id="servicos" class="bg-dark text-center">
-    <div class="container">
-      <h2 class="mb-5">Serviços</h2>
-      <div class="row g-4">
-        <div class="col-md-3">
-          <div class="p-4 neon-card">
-            <i class="bi bi-globe2 display-5 mb-3"></i>
-            <h5>Desenvolvimento Drupal</h5>
-            <p>Sites modulares, seguros e com alto desempenho baseados no CMS Drupal.</p>
+    <section id="servicos" class="section-block section-muted">
+      <div class="container">
+        <div class="section-heading text-center">
+          <p class="section-kicker">Serviços</p>
+          <h2>Como posso ajudar</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-globe2" aria-hidden="true"></i>
+              <h3>Sites Drupal</h3>
+              <p>Projetos institucionais e portais com arquitetura modular, segurança e manutenção organizada.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-code-slash" aria-hidden="true"></i>
+              <h3>Sistemas PHP</h3>
+              <p>Painéis administrativos, fluxos internos, APIs e integrações criados para a rotina do negócio.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-database-check" aria-hidden="true"></i>
+              <h3>Banco de Dados</h3>
+              <p>Modelagem, consultas, autenticação, regras de negócio e organização de dados para sistemas web.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-hdd-network" aria-hidden="true"></i>
+              <h3>Servidores &amp; NAS</h3>
+              <p>Configuração, backups, redes, armazenamento e suporte para ambientes locais ou hospedados.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-headset" aria-hidden="true"></i>
+              <h3>Suporte Remoto</h3>
+              <p>Atendimento técnico para manutenção, hospedagem, ajustes de sistemas e operação do dia a dia.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="service-card">
+              <i class="bi bi-mortarboard" aria-hidden="true"></i>
+              <h3>Treinamento Drupal</h3>
+              <p>Curso de Drupal 7 com tema GovBR para quem precisa entender a base do CMS na prática.</p>
+              <a class="text-link" href="https://www.udemy.com/course/basico-drupal-7-com-tema-govbr/?referralCode=48B83C9D59974F32832B" target="_blank" rel="noopener noreferrer">Acessar curso</a>
+            </article>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="p-4 neon-card">
-            <i class="bi bi-code-slash display-5 mb-3"></i>
-            <h5>Desenvolvimento PHP</h5>
-            <p>Sistemas personalizados, painéis administrativos e APIs sob medida.</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section-block">
+      <div class="container">
+        <div class="section-heading text-center">
+          <p class="section-kicker">Portfólio</p>
+          <h2>Projetos e sistemas</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://www.mestrehiram.org.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Loja Mestre Hiram">
+                <img src="https://www.mestrehiram.org.br/uploads/logo/mestrehiram.png" alt="Loja Mestre Hiram" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Institucional</span>
+                <h3>Loja Mestre Hiram</h3>
+                <p>Presença digital e organização de conteúdo institucional.</p>
+                <a class="project-link" href="https://www.mestrehiram.org.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://complexo.mestrehiram.org.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Complexo Mestre Hiram">
+                <img src="https://complexo.mestrehiram.org.br/logo_geral_sem_borda-768x768.png" alt="Complexo Mestre Hiram" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Portal</span>
+                <h3>Complexo Mestre Hiram</h3>
+                <p>Projeto web para apresentação do complexo e seus serviços.</p>
+                <a class="project-link" href="https://complexo.mestrehiram.org.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://www.karcontrol.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Karcontrol">
+                <img src="https://www.karcontrol.com.br/assets/img/logo.png" alt="Karcontrol" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Sistema</span>
+                <h3>Karcontrol</h3>
+                <p>Solução digital para gestão e operação automotiva.</p>
+                <a class="project-link" href="https://www.karcontrol.com.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://frotamanager.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir FrotaManager">
+                <img src="https://frotamanager.com.br/uploads/unidades/unit_20260804_185451_b6d940e3.png?v=1785880491" alt="FrotaManager" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Gestão de Frotas</span>
+                <h3>FrotaManager</h3>
+                <p>Sistema para controle de veículos, ordens de serviço, oficinas e financeiro.</p>
+                <a class="project-link" href="https://frotamanager.com.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://comexpro.frotamanager.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir ComexPro">
+                <span class="portfolio-badge">CP</span>
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Comércio Exterior</span>
+                <h3>ComexPro</h3>
+                <p>Sistema de comércio exterior com acesso web para operação e acompanhamento.</p>
+                <a class="project-link" href="https://comexpro.frotamanager.com.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://www.cavernas.org.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Sociedade Brasileira de Espeleologia">
+                <img src="https://www.cavernas.org.br/wp-content/uploads/2021/02/logo_sbe-com_texto-200_px.png" alt="Sociedade Brasileira de Espeleologia" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Institucional</span>
+                <h3>Sociedade Brasileira de Espeleologia</h3>
+                <p>Site institucional com conteúdo técnico e informativo.</p>
+                <a class="project-link" href="https://www.cavernas.org.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://espeleoplanaltocentral.org.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Espeleo Planalto Central">
+                <img src="https://espeleoplanaltocentral.org.br/wp-content/uploads/2022/11/cropped-epc.jpg" alt="Espeleo Planalto Central" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Institucional</span>
+                <h3>Espeleo Planalto Central</h3>
+                <p>Projeto web para organização e divulgação de atividades.</p>
+                <a class="project-link" href="https://espeleoplanaltocentral.org.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://egb.org.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Espeleo Grupo de Brasília">
+                <img src="https://egb.org.br/wp-content/uploads/2019/05/Logo-EGB-2019-RGB.png" alt="Espeleo Grupo de Brasília" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Institucional</span>
+                <h3>Espeleo Grupo de Brasília</h3>
+                <p>Site para comunicação institucional e conteúdo do grupo.</p>
+                <a class="project-link" href="https://egb.org.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://cantodoriofc.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Canto do Rio Futebol Clube">
+                <img src="https://cantodoriofc.com.br/site/wp-content/uploads/2023/04/307649451_464667072370782_6850558708950714696_n.jpg" alt="Canto do Rio Futebol Clube" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Clube</span>
+                <h3>Canto do Rio Futebol Clube</h3>
+                <p>Presença digital para clube esportivo tradicional.</p>
+                <a class="project-link" href="https://cantodoriofc.com.br/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <article class="portfolio-card">
+              <a class="portfolio-logo" href="https://www.mestrehiram.org.br/sysloja/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Sistema para Lojas Maçônicas">
+                <img src="https://www.mestrehiram.org.br/uploads/logo/mestrehiram.png" alt="Sistema para Lojas Maçônicas" loading="lazy">
+              </a>
+              <div class="portfolio-content">
+                <span class="project-tag">Sistema PHP</span>
+                <h3>Sistema para Lojas Maçônicas</h3>
+                <p>Sistema web para gestão interna de lojas maçônicas.</p>
+                <a class="project-link" href="https://www.mestrehiram.org.br/sysloja/" target="_blank" rel="noopener noreferrer">Acessar projeto <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="p-4 neon-card">
-            <i class="bi bi-hdd-network display-5 mb-3"></i>
-            <h5>Servidores & NAS</h5>
-            <p>Configuração e manutenção de servidores de arquivos, backups e NAS corporativos.</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="p-4 neon-card">
-            <i class="bi bi-headset display-5 mb-3"></i>
-            <h5>Suporte Remoto</h5>
-            <p>Atendimento técnico especializado para sistemas, redes e hospedagem.</p>
-          </div>
-        </div>
-        <!-- Novos serviços -->
-        <div class="col-md-6">
-          <div class="p-4 neon-card">
-            <i class="bi bi-mortarboard display-5 mb-3"></i>
-            <h5>Treinamento Drupal 7 na Udemy</h5>
-            <p>Curso completo para iniciantes aprenderem Drupal 7 com tema GovBR.<br>
-              <a href="https://www.udemy.com/course/basico-drupal-7-com-tema-govbr/?referralCode=48B83C9D59974F32832B" target="_blank" class="btn btn-outline-info mt-2">Acessar Curso</a>
+      </div>
+    </section>
+
+    <section id="stack" class="section-block stack-section">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5">
+            <p class="section-kicker">Arquivo único</p>
+            <h2>Pronto para GitHub Pages.</h2>
+            <p>
+              A página está concentrada em uma única index, com HTML, CSS e JavaScript no mesmo arquivo.
+              Assim ela pode ser publicada diretamente em um repositório do GitHub.
             </p>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="p-4 neon-card">
-            <i class="bi bi-youtube display-5 mb-3"></i>
-            <h5>Canal no YouTube</h5>
-            <p>Dicas prátias sobre Desenvolvimento com Drupal<br>
-              <a href="https://www.youtube.com/@rogersilvabkd" target="_blank" class="btn btn-outline-info mt-2">Visitar Canal</a>
-            </p>
+          <div class="col-lg-7">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="stack-card">
+                  <h3>Front-end</h3>
+                  <ul>
+                    <li>HTML5 semântico</li>
+                    <li>CSS responsivo</li>
+                    <li>Bootstrap</li>
+                    <li>JavaScript</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stack-card">
+                  <h3>Back-end</h3>
+                  <ul>
+                    <li>PHP</li>
+                    <li>Drupal</li>
+                    <li>APIs</li>
+                    <li>Sistemas web</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stack-card">
+                  <h3>Infraestrutura</h3>
+                  <ul>
+                    <li>Hospedagem</li>
+                    <li>Servidores</li>
+                    <li>NAS</li>
+                    <li>Backups</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="contato" class="section-block contact-section">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-5">
+            <div class="contact-copy">
+              <p class="section-kicker">Contato</p>
+              <h2>Vamos conversar sobre seu projeto?</h2>
+              <p>
+                Envie uma mensagem direta pelo WhatsApp ou preencha o formulário para abrir a conversa
+                com um texto pronto.
+              </p>
+              <div class="contact-links">
+                <a href="https://wa.me/5521965729525?text=Ol%C3%A1%2C%20Roger%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20em%20PHP%2FDrupal." target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                  WhatsApp
+                </a>
+                <a href="mailto:rogpan@gmail.com">
+                  <i class="bi bi-envelope" aria-hidden="true"></i>
+                  E-mail
+                </a>
+                <a href="https://www.linkedin.com/in/roger-silva-2446401b0/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <form class="contact-form" id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="name" name="name" maxlength="120" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Telefone</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" maxlength="30">
+                </div>
+                <div class="col-12">
+                  <label for="subject" class="form-label">Assunto</label>
+                  <select class="form-select" id="subject" name="subject" required>
+                    <option value="Sistema PHP">Sistema PHP</option>
+                    <option value="Drupal">Drupal</option>
+                    <option value="Suporte remoto">Suporte remoto</option>
+                    <option value="Servidores e NAS">Servidores e NAS</option>
+                    <option value="Outro projeto">Outro projeto</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">Mensagem</label>
+                  <textarea class="form-control" id="message" name="message" rows="4" maxlength="800" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary btn-lg w-100" type="submit">
+                    <i class="bi bi-send" aria-hidden="true"></i>
+                    Enviar pelo WhatsApp
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>&copy; 2026 Roger Silva. Desenvolvimento PHP &amp; Drupal.</span>
+      <a href="#home">Voltar ao topo</a>
     </div>
-  </section>
-  <!-- Portfólio -->
-  <section id="portfolio" class="container text-center">
-    <h2 class="mb-5">Portfólio</h2>
-    <div class="row g-4">
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://www.mestrehiram.org.br/" target="_blank">
-          <img src="https://www.mestrehiram.org.br/wp-content/uploads/2024/07/logo.png" alt="Loja Mestre Hiram">
-        </a>
-        <p class="mt-2">Loja Mestre Hiram</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://www.cavernas.org.br/" target="_blank">
-          <img src="https://www.cavernas.org.br/wp-content/uploads/2021/02/logo_sbe-com_texto-200_px.png" alt="Sociedade Brasileira de Espeleologia">
-        </a>
-        <p class="mt-2">Sociedade Brasileira de Espeleologia</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://espeleoplanaltocentral.org.br/" target="_blank">
-          <img src="https://espeleoplanaltocentral.org.br/wp-content/uploads/2022/11/cropped-epc.jpg" alt="Espeleo Planalto Central">
-        </a>
-        <p class="mt-2">Espeleo Planalto Central</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://egb.org.br/" target="_blank">
-          <img src="https://egb.org.br/wp-content/uploads/2019/05/Logo-EGB-2019-RGB.png" alt="Espeleo Grupo de Brasília">
-        </a>
-        <p class="mt-2">Espeleo Grupo de Brasília</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://complexo.mestrehiram.org.br/" target="_blank">
-          <img src="https://complexo.mestrehiram.org.br/wp-content/uploads/2024/08/logo_geral_sem_borda.png" alt="Complexo Mestre Hiram">
-        </a>
-        <p class="mt-2">Complexo Mestre Hiram</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://cantodoriofc.com.br/" target="_blank">
-          <img src="https://cantodoriofc.com.br/site/wp-content/uploads/2023/04/307649451_464667072370782_6850558708950714696_n.jpg" alt="Canto do Rio FC">
-        </a>
-        <p class="mt-2">Canto do Rio Futebol Clube</p>
-      </div>
-
-      <div class="col-md-4 portfolio-item">
-        <a href="https://www.mestrehiram.org.br/sysloja/" target="_blank">
-          <img src="https://www.mestrehiram.org.br/wp-content/uploads/2024/07/logo.png" alt="Sistema para Lojas Maçônicas">
-        </a>
-        <p class="mt-2">Sistema para Lojas Maçônicas</p>
-      </div>
-       <div class="col-md-4 portfolio-item">
-        <a href="https://karcontrol.com.br/" target="_blank">
-          <img src="https://karcontrol.com.br/wp-content/uploads/2023/07/logo_karcontrol.png" alt="Karcontrol">
-        </a>
-        <p class="mt-2">Karcontrol</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contato -->
-  <section id="contato" class="bg-dark text-center">
-    <div class="container">
-      <h2 class="mb-4">Contato</h2>
-      <p class="lead">Entre em contato comigo através dos canais abaixo:</p>
-      <div class="social-icons mt-3">
-        <a href="mailto:rogpan@gmail.com" title="E-mail"><i class="bi bi-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/roger-silva-2446401b0/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-     <!--   <a href="https://wa.me/55" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a> -->
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Roger Silva — Desenvolvedor Drupal & PHP</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const nav = document.querySelector('.site-nav');
+    const navLinks = document.querySelectorAll('.navbar-collapse .nav-link, .navbar-collapse .nav-cta');
+    const navCollapse = document.querySelector('.navbar-collapse');
+    const contactForm = document.querySelector('#contactForm');
+    const whatsappNumber = '5521965729525';
+
+    function updateNavState() {
+      if (!nav) {
+        return;
+      }
+
+      nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!navCollapse || !navCollapse.classList.contains('show') || !window.bootstrap) {
+          return;
+        }
+
+        window.bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+      });
+    });
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity()) {
+          return;
+        }
+
+        const data = new FormData(contactForm);
+        const lines = [
+          'Olá, Roger! Vim pelo seu site.',
+          '',
+          `Nome: ${data.get('name') || ''}`,
+          data.get('phone') ? `Telefone: ${data.get('phone')}` : '',
+          `Assunto: ${data.get('subject') || ''}`,
+          '',
+          'Mensagem:',
+          data.get('message') || ''
+        ].filter((line) => line !== '');
+
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    }
+  </script>
 </body>
 </html>
